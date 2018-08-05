@@ -6,7 +6,7 @@
 "    By: kcheung <marvin@42.fr>                     +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2017/04/15 00:37:25 by kcheung           #+#    #+#              "
-"    Updated: 2018/05/19 14:12:35 by filemaker        ###   ########.fr        "
+"    Updated: 2018/06/19 21:08:25 by filemaker        ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -49,7 +49,7 @@ Plugin 'tomtom/tlib_vim.git'				"snipmate dependency
 Plugin 'MarcWeber/vim-addon-mw-utils.git'	"snipmate dependency
 Plugin 'garbas/vim-snipmate'				"tab launch for snippets
 Plugin 'honza/vim-snippets'
-Plugin 'SirVer/ultisnips'
+Plugin 'SirVer/ultisnips'					"Snips
 
 "Django
 Plugin 'Valloric/YouCompleteMe'
@@ -109,19 +109,10 @@ syntax on
 :set showcmd
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip 
 set backspace=indent,eol,start
+set ttymouse=sgr
 
 "set Leader key to ,
 let mapleader = ","
-
-"Specific for Python files
-function! SetupPython()
-	" Here, you can have the final say on what is set.  So
-	" fixup any settings you don't like.
-	setlocal softtabstop=2
-	setlocal tabstop=2
-	setlocal shiftwidth=2
-endfunction
-command! -bar SetupPython call SetupPython()
 
 
 "}}}
@@ -154,6 +145,16 @@ augroup CulHighlight
 	autocmd InsertLeave * hi cursorline guibg=#3c3836
 augroup END
 
+"Specific for Python files
+function! SetupPython()
+	" Here, you can have the final say on what is set.  So
+	" fixup any settings you don't like.
+	setlocal softtabstop=2
+	setlocal tabstop=2
+	setlocal shiftwidth=2
+endfunction
+command! -bar SetupPython call SetupPython()
+
 "}}}
 "Convenience Remappings -----------------------------------------------------{{{
 :set timeoutlen=500
@@ -172,7 +173,8 @@ let maplocalleader = "\\"
 noremap Q !!$SHELL <cr>
 
 "allow vim to share clipboard with the system's clipboard
-set clipboard=unnamedplus,unnamed,autoselect
+" set clipboard=unnamedplus,unnamed,autoselect
+set clipboard=unnamedplus
 
 "}}}
 "Searching and Movement -----------------------------------------------------{{{
@@ -222,6 +224,7 @@ nnoremap <leader><space> :noh<cr>:call clearmatches()<cr>
 :autocmd FileType python setlocal shiftwidth=4
 :autocmd BufRead ~/.vim/vimrc setlocal foldmethod=marker
 :autocmd BufRead ~/.vim/vimrc setlocal foldnestmax=10
+autocmd FileType javascript set tabstop=2|set shiftwidth=2
 
 "Space to toggle folds
 nnoremap <Space> za
@@ -263,6 +266,7 @@ onoremap id i[
 onoremap ad a[
 vnoremap id i[
 vnoremap ad a[
+map ;; A;<Esc>
 
 imap <C-l> <Esc>$a
 
