@@ -6,7 +6,7 @@
 "    By: kcheung <marvin@42.fr>                     +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2017/04/15 00:37:25 by kcheung           #+#    #+#              "
-"    Updated: 2018/06/19 21:08:25 by filemaker        ###   ########.fr        "
+"    Updated: 2018/08/06 16:35:01 by filemaker        ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -425,13 +425,17 @@ endfunction
 "}}}
 "Plugin Setup ---------------------------------------------------------------{{{
 
-"Automatically Start Nerd Tree --------{{{
+"Nerd Tree --------{{{
 
+"Automatically start Nerd Tree
 autocmd VimEnter * NERDTree
 autocmd VimEnter * vertical resize 25
 autocmd VimEnter * wincmd p
 let NERDTreeShowLineNumbers=1
 autocmd FileType nerdtree setlocal relativenumber
+
+"Toggle NerdTree
+map <leader>nt :NERDTreeToggle<CR>
 
 "}}}
 "Vim Status Lines ---------------------{{{
